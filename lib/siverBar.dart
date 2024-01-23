@@ -1,4 +1,12 @@
+import 'package:awesome_icons/awesome_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:p1/Widgets/list_tiles.dart';
+import 'package:p1/Widgets/sliver_appbar.dart';
+import 'package:p1/Widgets/storage_box.dart';
+import 'package:p1/Widgets/whole_gridview.dart';
+import 'package:p1/Widgets/bottom_navigation_bar.dart';
+import 'package:p1/responsive.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class SliverAppBarExample extends StatefulWidget {
   const SliverAppBarExample({super.key});
@@ -14,219 +22,137 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
 
   @override
   Widget build(BuildContext context) {
+    final responsive = Responsive.of(context);
     return Scaffold(
-      backgroundColor: Colors.red,
-      // SliverAppBar is declared in Scaffold.body, in slivers of a
-      // CustomScrollView.
+      resizeToAvoidBottomInset: false,
+      backgroundColor: Colors.black,
       body: CustomScrollView(
         slivers: <Widget>[
-          SliverAppBar(
-            foregroundColor: Colors.blue,
-            forceMaterialTransparency: false,
-            backgroundColor: Colors.black54,
-            pinned: this._pinned,
-            snap: this._snap,
-            floating: this._floating,
-            actions: [
-              Icon(
-                Icons.more_horiz,
-              ),
-            ],
-            expandedHeight: 250.0,
-            flexibleSpace: FlexibleSpaceBar(
-              expandedTitleScale: 2,
-              titlePadding: EdgeInsets.all(10),
-              background: Image.asset(
-                "assets/images/img.png",
-                fit: BoxFit.fill,
-              ),
-              title: Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text("Files"),
-                    SearchBar(
-                      constraints: BoxConstraints(minHeight: 0.0,maxHeight: 30),
-                      leading: Icon(Icons.search_sharp),
-                    ),
-                  ],
+          sliver_appbar(pinned: _pinned, snap: _snap, floating: _floating),
+          SliverFillRemaining(
+            child: Column(
+              children: [
+                storage_box(responsive: responsive),
+                SizedBox(
+                  height: 10,
                 ),
-              ),
-            ),
-          ),
-          // If the main content is a list, use SliverList instead.
-
-          SliverToBoxAdapter(
-            child: Icon(
-              Icons.local_fire_department_outlined,
-              color: Colors.yellow,
-              size: 55,
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Icon(
-              Icons.local_fire_department_outlined,
-              color: Colors.yellow,
-              size: 55,
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Icon(
-              Icons.local_fire_department_outlined,
-              color: Colors.yellow,
-              size: 55,
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Icon(
-              Icons.local_fire_department_outlined,
-              color: Colors.yellow,
-              size: 55,
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Icon(
-              Icons.local_fire_department_outlined,
-              color: Colors.yellow,
-              size: 55,
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Icon(
-              Icons.local_fire_department_outlined,
-              color: Colors.yellow,
-              size: 55,
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Icon(
-              Icons.local_fire_department_outlined,
-              color: Colors.yellow,
-              size: 55,
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Icon(
-              Icons.local_fire_department_outlined,
-              color: Colors.yellow,
-              size: 55,
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Icon(
-              Icons.local_fire_department_outlined,
-              color: Colors.yellow,
-              size: 55,
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Icon(
-              Icons.local_fire_department_outlined,
-              color: Colors.yellow,
-              size: 55,
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Icon(
-              Icons.local_fire_department_outlined,
-              color: Colors.yellow,
-              size: 55,
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Icon(
-              Icons.local_fire_department_outlined,
-              color: Colors.yellow,
-              size: 55,
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Icon(
-              Icons.local_fire_department_outlined,
-              color: Colors.yellow,
-              size: 55,
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Icon(
-              Icons.local_fire_department_outlined,
-              color: Colors.yellow,
-              size: 55,
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Icon(
-              Icons.local_fire_department_outlined,
-              color: Colors.yellow,
-              size: 55,
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Icon(
-              Icons.local_fire_department_outlined,
-              color: Colors.yellow,
-              size: 55,
+                whole_gridview(responsive: responsive),
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    'Sources',
+                    style: TextStyle(
+                      color: Colors.white60,
+                      fontSize: 20,
+                    ),
+                  ),
+                ).pOnly(bottom: 10),
+                Container(
+                  width: responsive.widthPercent(95),
+                  height: responsive.heightPercent(22),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: Color.fromRGBO(26, 26, 26, 1),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      list_tiles(
+                        iconColor: Colors.green,
+                        listIcon: FontAwesomeIcons.whatsappSquare,
+                        titleList: "Whatsapp",
+                        trailIcon: FontAwesomeIcons.chevronRight,
+                      ),
+                      list_tiles(
+                        iconColor: Colors.green,
+                        listIcon: FontAwesomeIcons.download,
+                        titleList: "Download",
+                        trailIcon: FontAwesomeIcons.chevronRight,
+                      ),
+                      list_tiles(
+                        iconColor: Color.fromRGBO(46, 64, 234, 1),
+                        listIcon: FontAwesomeIcons.bluetooth,
+                        titleList: "Bluetooth",
+                        trailIcon: FontAwesomeIcons.chevronRight,
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 12,
+                ),
+                Container(
+                  width: responsive.widthPercent(95),
+                  height: responsive.heightPercent(17),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: Color.fromRGBO(26, 26, 26, 1),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      list_tiles(
+                        iconColor: Color.fromRGBO(46, 64, 234, 1),
+                        listIcon: FontAwesomeIcons.lock,
+                        titleList: "Private Safe",
+                        trailIcon: FontAwesomeIcons.chevronRight,
+                      ),
+                      ListTile(
+                        leading: Icon(
+                          Icons.delete_outlined,
+                          color: Color.fromRGBO(46, 64, 234, 1),
+                          size: 35,
+                        ),
+                        subtitle: Text(
+                          '2 items | 94.5 MB',
+                          style: TextStyle(color: Colors.white38),
+                        ),
+                        title: Text(
+                          "Recently Deleted",
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                        trailing: Icon(
+                          FontAwesomeIcons.chevronRight,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
         ],
-      ),
-      bottomNavigationBar: this._getBottomAppBar(),
-    );
-  }
-
-  Widget _getBottomAppBar() {
-    return BottomAppBar(
-      child: ButtonBar(
-        alignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          Row(
-            children: <Widget>[
-              const Text('pinned'),
-              Switch(
-                onChanged: (bool val) {
-                  setState(() {
-                    this._pinned = val;
-                  });
-                },
-                value: this._pinned,
-              ),
-            ],
+      ).pOnly(left: 10, right: 10),
+      bottomNavigationBar: Container(
+        height: responsive.heightPercent(8),
+        child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+          bottom_navigation_bar(
+            bottomIcon: Icon(
+              Icons.folder_copy_outlined,
+              color: Colors.white,
+            ),
+            label: "Files",
           ),
-          Row(
-            children: <Widget>[
-              const Text('snap'),
-              Switch(
-                onChanged: (bool val) {
-                  setState(() {
-                    this._snap = val;
-                    // **Snapping only applies when the app bar is floating.**
-                    this._floating = this._floating || val;
-                  });
-                },
-                value: this._snap,
-              ),
-            ],
+          bottom_navigation_bar(
+            bottomIcon: Icon(
+              FontAwesomeIcons.clock,
+              color: Colors.white,
+            ),
+            label: "Recent",
           ),
-          Row(
-            children: <Widget>[
-              const Text('floating'),
-              Switch(
-                onChanged: (bool val) {
-                  setState(() {
-                    this._floating = val;
-                    if (this._snap == true) {
-                      if (this._floating != true) {
-                        this._snap = false;
-                      }
-                    }
-                  });
-                },
-                value: this._floating,
-              ),
-            ],
+          bottom_navigation_bar(
+            bottomIcon: Icon(
+              FontAwesomeIcons.tags,
+              color: Colors.white,
+            ),
+            label: "Tag",
           ),
-        ],
+        ]),
       ),
     );
   }
