@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:p1/sliverAppBar.dart';
+import 'package:p1/pages/HomePage.dart';
 
 
 void main() {
@@ -19,29 +19,5 @@ class MyApp extends StatelessWidget {
       ),
       home: const HomePage(),
     );
-  }
-}
-
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
-  late AnimationController c1;
-
-  @override
-  void initState() {
-    c1 = AnimationController(vsync: this);
-    super.initState();
-  }
-
-  bool manualT = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return  SliverAppBarExample();
   }
 }

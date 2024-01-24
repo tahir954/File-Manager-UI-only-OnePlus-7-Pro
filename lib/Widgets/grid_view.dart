@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:p1/responsive.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 class Grid_View extends StatelessWidget {
   final IconData icon;
@@ -15,9 +13,8 @@ class Grid_View extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final responsive=Responsive.of(context);
     return Container(
-      width:115,
+      width:125,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
         color: Color.fromRGBO(26, 26, 26, 1),

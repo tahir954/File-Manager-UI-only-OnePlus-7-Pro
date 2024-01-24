@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class bottom_navigation_bar extends StatelessWidget {
   final String label;
-  final Widget bottomIcon;
+  final IconData bottomIcon;
   const bottom_navigation_bar({
     super.key, required this.label, required this.bottomIcon,
   });
@@ -13,10 +13,11 @@ class bottom_navigation_bar extends StatelessWidget {
 
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        IconButton(
-          onPressed: () {},
-          icon: bottomIcon,
-          iconSize: 20,
+        Icon(
+
+         bottomIcon, size: 20,
+          color: Colors.white,
+
         ),
         Text(
           label,style: TextStyle(

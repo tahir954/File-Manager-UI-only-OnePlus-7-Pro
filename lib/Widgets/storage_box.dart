@@ -63,7 +63,7 @@ class storage_box extends StatelessWidget {
             ],
           ),
         ],
-      ).pOnly(left: 15, top: 15),
-    );
+      ).pOnly(left: 15, top: 15,),
+    ).pOnly(bottom: 5);
   }
 }

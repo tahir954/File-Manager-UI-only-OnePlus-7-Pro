@@ -29,9 +29,9 @@ class search_bar extends StatelessWidget {
       textStyle: MaterialStatePropertyAll(
         MaterialStateTextStyle.resolveWith(
           (states) => TextStyle(
-            color: Color.fromRGBO(95, 95, 95, 1),
+            color: Colors.white60,
             decorationColor: Color.fromRGBO(95, 95, 95, 1),
-            fontSize: 10,
+            fontSize: 8,
             height: 1,
           ),
         ),
