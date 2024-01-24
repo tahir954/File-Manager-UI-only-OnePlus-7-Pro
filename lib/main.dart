@@ -1,8 +1,7 @@
-import 'package:animate_do/animate_do.dart';
+
 import 'package:flutter/material.dart';
-import 'package:p1/new_silver.dart';
-import 'package:p1/siverBar.dart';
-import 'package:velocity_x/velocity_x.dart';
+import 'package:p1/sliverAppBar.dart';
+
 
 void main() {
   runApp(const MyApp());

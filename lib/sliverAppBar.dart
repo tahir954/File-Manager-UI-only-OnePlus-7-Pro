@@ -8,6 +8,8 @@ import 'package:p1/Widgets/bottom_navigation_bar.dart';
 import 'package:p1/responsive.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import 'Widgets/grid_view.dart';
+
 class SliverAppBarExample extends StatefulWidget {
   const SliverAppBarExample({super.key});
 
@@ -30,13 +32,66 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
         slivers: <Widget>[
           sliver_appbar(pinned: _pinned, snap: _snap, floating: _floating),
           SliverFillRemaining(
+            hasScrollBody: false,
             child: Column(
               children: [
                 storage_box(responsive: responsive),
                 SizedBox(
                   height: 10,
                 ),
-                whole_gridview(responsive: responsive),
+                Container(
+                  width: responsive.widthPercent(93),
+                  height: responsive.heightPercent(27),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Grid_View(
+                              count: "316",
+                              icon: Icons.image,
+                              label: "Photos",
+                            ),
+                            Grid_View(
+                              count: "78",
+                              icon: Icons.video_camera_back_outlined,
+                              label: "Videos",
+                            ),
+                            Grid_View(
+                              count: "254",
+                              icon: Icons.audiotrack_outlined,
+                              label: "Audio",
+                            ),
+                          ],
+                        ).pOnly(bottom: 10),
+                      ),
+                      Expanded(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Grid_View(
+                              count: "56",
+                              icon: Icons.file_open,
+                              label: "Documents",
+                            ),
+                            Grid_View(
+                              count: "51",
+                              icon: Icons.android_outlined,
+                              label: "APKs",
+                            ),
+                            Grid_View(
+                              count: "6",
+                              icon: Icons.archive_outlined,
+                              label: "Archives",
+                            ),
+                          ],
+                        ).pOnly(bottom: 10),
+                      ),
+                    ],
+                  ),
+                ),
                 Align(
                   alignment: Alignment.topLeft,
                   child: Text(
@@ -131,28 +186,28 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             mainAxisSize: MainAxisSize.min,
             children: [
-          bottom_navigation_bar(
-            bottomIcon: Icon(
-              Icons.folder_copy_outlined,
-              color: Colors.white,
-            ),
-            label: "Files",
-          ),
-          bottom_navigation_bar(
-            bottomIcon: Icon(
-              FontAwesomeIcons.clock,
-              color: Colors.white,
-            ),
-            label: "Recent",
-          ),
-          bottom_navigation_bar(
-            bottomIcon: Icon(
-              FontAwesomeIcons.tags,
-              color: Colors.white,
-            ),
-            label: "Tag",
-          ),
-        ]),
+              bottom_navigation_bar(
+                bottomIcon: Icon(
+                  Icons.folder_copy_outlined,
+                  color: Colors.white,
+                ),
+                label: "Files",
+              ),
+              bottom_navigation_bar(
+                bottomIcon: Icon(
+                  FontAwesomeIcons.clock,
+                  color: Colors.white,
+                ),
+                label: "Recent",
+              ),
+              bottom_navigation_bar(
+                bottomIcon: Icon(
+                  FontAwesomeIcons.tags,
+                  color: Colors.white,
+                ),
+                label: "Tag",
+              ),
+            ]),
       ),
     );
   }

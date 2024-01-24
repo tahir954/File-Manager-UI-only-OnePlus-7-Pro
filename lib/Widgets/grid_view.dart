@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:p1/responsive.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class Grid_View extends StatelessWidget {
   final IconData icon;
   final String label;
   final String count;
-  const Grid_View({super.key, required this.icon, required this.label, required this.count});
+
+  const Grid_View(
+      {super.key,
+      required this.icon,
+      required this.label,
+      required this.count});
 
   @override
   Widget build(BuildContext context) {
+    final responsive=Responsive.of(context);
     return Container(
+      width:115,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
         color: Color.fromRGBO(26, 26, 26, 1),
@@ -27,7 +36,9 @@ class Grid_View extends StatelessWidget {
           ),
           Text(
             count,
-            style: TextStyle(color: Colors.white54,),
+            style: TextStyle(
+              color: Colors.white54,
+            ),
           ),
         ],
       ),
