@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:p1/responsive.dart';
+import 'package:p1/Constants/responsive.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class storage_box extends StatelessWidget {
