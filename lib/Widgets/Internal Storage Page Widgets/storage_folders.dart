@@ -17,13 +17,12 @@ class Storage_folders extends StatelessWidget {
       ),
       title: Text(ListTitle,style: TextStyle(
         color: Colors.white,
-        fontSize: 18
+        fontSize: 16
       ),
       ),
       subtitle: Text(ListSubtitle + "  |  18/01/2024",
           style: TextStyle(
         color: Colors.white38,
-
       ),
       ),
     );
